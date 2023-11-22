@@ -1,0 +1,54 @@
+﻿@model Beestjes.Models.Beestje
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit animal</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Type, new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.Type, new List<SelectListItem>
+                {
+                new SelectListItem { Text = "Jungle", Value = "Jungle" },
+                new SelectListItem { Text = "Farm", Value = "Farm" },
+                new SelectListItem { Text = "Snow", Value = "Snow" },
+                new SelectListItem { Text = "Desert", Value = "Desert" },
+                new SelectListItem { Text = "VIP", Value = "VIP" },
+                }, "Select Type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Type, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Price, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Image, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Image, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Image, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -11,4 +11,6 @@ public class BeestjesContext : IdentityDbContext<BeestjeUser>
         : base(options)
     {
     }
+
+public DbSet<Beestjes.Models.Beestje> Beestje { get; set; } = default!;
 }
